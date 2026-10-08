@@ -1,0 +1,23 @@
+.container {
+	max-width: 720px;
+	margin: 2rem auto;
+	padding: 0 1rem;
+	font-family: sans-serif;
+}
+
+.tree-actions {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.tree-actions input {
+	min-width: 12rem;
+	padding: 0.4rem;
+}
+
+.tree-actions button {
+	padding: 0.4rem 0.7rem;
+	cursor: pointer;
+}

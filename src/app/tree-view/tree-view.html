@@ -1,0 +1,93 @@
+<div class="tree">
+  <ng-container
+    *ngTemplateOutlet="
+      nodeTemplate;
+      context: {
+        $implicit: sortedData,
+        level: 0
+      }
+    ">
+  </ng-container>
+
+</div>
+
+<ng-template
+  #nodeTemplate
+  let-nodes
+  let-level="level"
+>
+
+  @for (node of nodes; track node.id) {
+
+    <div
+      class="tree-node"
+      [class.selected]="isSelected(node)"
+      [style.padding-left.px]="level * 20"
+      (click)="select(node)"
+    >
+
+      @if (node.type === 'folder') {
+
+        <button
+          type="button"
+          class="arrow"
+          (click)="toggle(node); $event.stopPropagation()"
+          [attr.aria-label]="
+            isExpanded(node)
+              ? 'Collapse ' + node.name
+              : 'Expand ' + node.name
+          "
+        >
+
+          {{ isExpanded(node) ? '▼' : '▶' }}
+
+        </button>
+
+        <span class="icon">
+
+          {{ isExpanded(node) ? '📂' : '📁' }}
+
+        </span>
+
+      }
+
+      @else {
+
+        <span class="arrow-placeholder"></span>
+
+        <span class="icon">
+          📄
+        </span>
+
+      }
+
+
+      <span class="name">
+        {{ node.name }}
+      </span>
+
+    </div>
+
+
+    @if (
+      node.type === 'folder' &&
+      isExpanded(node) &&
+      node.children?.length
+    ) {
+
+      <ng-container
+        *ngTemplateOutlet="
+          nodeTemplate;
+          context: {
+            $implicit: node.children,
+            level: level + 1
+          }
+        "
+      >
+      </ng-container>
+
+    }
+
+  }
+
+</ng-template>
