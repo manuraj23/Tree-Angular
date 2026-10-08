@@ -19,88 +19,89 @@ export class App {
   newNodeName = '';
 
   private nextNodeId = 13;
+  treeData: TreeNode[]=[];
 
-  treeData: TreeNode[] = [
-    {
-      id: '1',
-      name: 'my-app',
-      type: 'folder',
+  // treeData: TreeNode[] = [
+  //   {
+  //     id: '1',
+  //     name: 'my-app',
+  //     type: 'folder',
 
-      children: [
-        {
-          id: '2',
-          name: 'src',
-          type: 'folder',
+  //     children: [
+  //       {
+  //         id: '2',
+  //         name: 'src',
+  //         type: 'folder',
 
-          children: [
-            {
-              id: '3',
-              name: 'components',
-              type: 'folder',
+  //         children: [
+  //           {
+  //             id: '3',
+  //             name: 'components',
+  //             type: 'folder',
 
-              children: [
-                {
-                  id: '4',
-                  name: 'header.component.ts',
-                  type: 'file'
-                },
-                {
-                  id: '5',
-                  name: 'button.component.ts',
-                  type: 'file'
-                }
-              ]
-            },
+  //             children: [
+  //               {
+  //                 id: '4',
+  //                 name: 'header.component.ts',
+  //                 type: 'file'
+  //               },
+  //               {
+  //                 id: '5',
+  //                 name: 'button.component.ts',
+  //                 type: 'file'
+  //               }
+  //             ]
+  //           },
 
-            {
-              id: '6',
-              name: 'assets',
-              type: 'folder',
-              children: []
-            },
+  //           {
+  //             id: '6',
+  //             name: 'assets',
+  //             type: 'folder',
+  //             children: []
+  //           },
 
-            {
-              id: '7',
-              name: 'main.ts',
-              type: 'file'
-            },
+  //           {
+  //             id: '7',
+  //             name: 'main.ts',
+  //             type: 'file'
+  //           },
 
-            {
-              id: '8',
-              name: 'app.component.ts',
-              type: 'file'
-            }
-          ]
-        },
+  //           {
+  //             id: '8',
+  //             name: 'app.component.ts',
+  //             type: 'file'
+  //           }
+  //         ]
+  //       },
 
-        {
-          id: '9',
-          name: 'public',
-          type: 'folder',
+  //       {
+  //         id: '9',
+  //         name: 'public',
+  //         type: 'folder',
 
-          children: [
-            {
-              id: '10',
-              name: 'favicon.ico',
-              type: 'file'
-            }
-          ]
-        },
+  //         children: [
+  //           {
+  //             id: '10',
+  //             name: 'favicon.ico',
+  //             type: 'file'
+  //           }
+  //         ]
+  //       },
 
-        {
-          id: '11',
-          name: 'package.json',
-          type: 'file'
-        },
+  //       {
+  //         id: '11',
+  //         name: 'package.json',
+  //         type: 'file'
+  //       },
 
-        {
-          id: '12',
-          name: 'README.md',
-          type: 'file'
-        }
-      ]
-    }
-  ];
+  //       {
+  //         id: '12',
+  //         name: 'README.md',
+  //         type: 'file'
+  //       }
+  //     ]
+  //   }
+  // ];
 
 
   onNodeSelected(node: TreeNode): void {

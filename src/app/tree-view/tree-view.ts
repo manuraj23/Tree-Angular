@@ -42,7 +42,6 @@ export class TreeView implements OnChanges {
 
   sortedData: TreeNode[] = [];
 
-
   ngOnChanges(changes: SimpleChanges): void {
 
     if (changes['data']) {
@@ -54,7 +53,6 @@ export class TreeView implements OnChanges {
     }
   }
 
-
   private sortTree(nodes: TreeNode[]): TreeNode[] {
 
     return [...nodes]
@@ -62,7 +60,6 @@ export class TreeView implements OnChanges {
         if (a.type !== b.type) {
           return a.type === 'folder' ? -1 : 1;
         }
-
         return a.name.localeCompare(
           b.name,
           undefined,
@@ -72,7 +69,6 @@ export class TreeView implements OnChanges {
         );
       })
       .map(node => {
-
         if (
           node.type === 'folder' &&
           node.children
@@ -82,7 +78,6 @@ export class TreeView implements OnChanges {
             children: this.sortTree(node.children)
           };
         }
-
         return node;
       });
   }
@@ -93,7 +88,6 @@ export class TreeView implements OnChanges {
 
   toggle(node: TreeNode): void {
 
-    // Files cannot be expanded
     if (node.type !== 'folder') {
       return;
     }
@@ -101,7 +95,6 @@ export class TreeView implements OnChanges {
     const currentlyExpanded =
       this.expandedIds.has(node.id);
 
-    // Create new Set
     const updatedIds =
       new Set(this.expandedIds);
 
@@ -118,19 +111,13 @@ export class TreeView implements OnChanges {
       expanded: !currentlyExpanded
     });
   }
-
-
   select(node: TreeNode): void {
-
     this.selectedId = node.id;
-
     this.nodeSelect.emit(node);
   }
-
 
   isSelected(node: TreeNode): boolean {
     return this.selectedId === node.id;
   }
 }
-
 export { TreeView as TreeViewComponent };
